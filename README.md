@@ -7,5 +7,6 @@
 - Create a new db with `createdb thinking_of_development`.
 - Start postgres command line with `psql`
 - Check if the db was created by listing all of your databases with `\l`.
+- Add the database path to `DATABASE_URL` in your `.env` file.
 2. Setup test database for running tests against
 - Repeat step 1 instructions but name your database `thinking_of_test` with `createdb thinking_of_test`.
