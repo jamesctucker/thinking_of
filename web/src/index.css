@@ -8,6 +8,10 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+
+.btn {
+  @apply rounded-none;
+}
 /**
  * END --- SETUP TAILWINDCSS EDIT
  */
