@@ -11,8 +11,6 @@ const HomePage = () => {
         Find me in <code>./web/src/pages/HomePage/HomePage.js</code>
       </p>
 
-      <button class="btn btn-primary">Submit</button>
-
       <p>
         My default route is named <code>home</code>, link to me with `
         <Link to={routes.home()}>Home</Link>`
