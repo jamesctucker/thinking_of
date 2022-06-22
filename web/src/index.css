@@ -10,7 +10,11 @@
 @import 'tailwindcss/utilities';
 
 .btn {
-  @apply rounded-none;
+   @apply rounded-none;
+}
+
+.input {
+   @apply rounded-none;
 }
 /**
  * END --- SETUP TAILWINDCSS EDIT
