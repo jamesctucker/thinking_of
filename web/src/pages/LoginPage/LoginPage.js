@@ -43,7 +43,7 @@ const LoginPage = () => {
       <>
          <MetaTags title="Login" />
 
-         <main className="flex w-full items-center justify-center">
+         <div className="flex w-full items-center justify-center">
             <Toaster toastOptions={{ className: 'rw-toast', duration: 6000 }} />
             <div className="card w-96 bg-base-100 shadow-xl rounded-none">
                <div class="card-body">
@@ -115,7 +115,7 @@ const LoginPage = () => {
                   </div>
                </div>
             </div>
-         </main>
+         </div>
       </>
    )
 }
