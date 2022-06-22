@@ -1,21 +1,55 @@
 import { Link, routes } from '@redwoodjs/router'
 import { MetaTags } from '@redwoodjs/web'
+import {
+   Form,
+   Label,
+   TextField,
+   SelectField,
+   FieldError,
+   Submit,
+} from '@redwoodjs/forms'
 
 const CreatePage = () => {
-  return (
-    <>
-      <MetaTags title="Create" description="Create page" />
+   const next = (data) => {
+      console.log(data)
+   }
+   return (
+      <>
+         <MetaTags title="Create" description="Create page" />
 
-      <h1>CreatePage</h1>
-      <p>
-        Find me in <code>./web/src/pages/CreatePage/CreatePage.js</code>
-      </p>
-      <p>
-        My default route is named <code>create</code>, link to me with `
-        <Link to={routes.create()}>Create</Link>`
-      </p>
-    </>
-  )
+         <h1>You're one step closer to making someone's day!</h1>
+         <Form onSubmit={next}>
+            <Label
+               name="receiverName"
+               className="rw-label"
+               errorClassName="rw-label rw-label-error"
+            >
+               Who is this event for?
+            </Label>
+            <TextField
+               name="receiverName"
+               className="rw-input"
+               errorClassName="rw-input rw-input-error"
+            />
+
+            <Label
+               name="eventType"
+               className="rw-label"
+               errorClassName="rw-label rw-label-error"
+            >
+               What kind of event is this?
+            </Label>
+            <SelectField name="eventType" className="rw-input" multiple={false}>
+               <option>birthday</option>
+               <option>anniversary</option>
+               <option>get well</option>
+               <option>memorial</option>
+            </SelectField>
+
+            <Submit className="btn btn-primary">Next</Submit>
+         </Form>
+      </>
+   )
 }
 
 export default CreatePage
