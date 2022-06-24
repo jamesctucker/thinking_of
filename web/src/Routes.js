@@ -11,19 +11,23 @@ import { Router, Route, Set } from '@redwoodjs/router'
 import MainLayout from 'src/layouts/MainLayout'
 
 const Routes = () => {
-  return (
-    <Router>
-      <Set wrap={MainLayout}>
-        <Route path="/login" page={LoginPage} name="login" />
-        <Route path="/signup" page={SignupPage} name="signup" />
-        <Route path="/forgot-password" page={ForgotPasswordPage} name="forgotPassword" />
-        <Route path="/reset-password" page={ResetPasswordPage} name="resetPassword" />
-        <Route path="/create" page={CreatePage} name="create" />
-        <Route path="/" page={HomePage} name="home" />
-        <Route notfound page={NotFoundPage} />
-      </Set>
-    </Router>
-  )
+   return (
+      <Router>
+         <Set wrap={MainLayout}>
+            <Route path="/login" page={LoginPage} name="login" />
+            <Route path="/signup" page={SignupPage} name="signup" />
+            <Route path="/forgot-password" page={ForgotPasswordPage} name="forgotPassword" />
+            <Route path="/reset-password" page={ResetPasswordPage} name="resetPassword" />
+            <Set>
+               <Route path="/create" page={CreateCreatePage} name="create" />
+               <Route path="/create/event-details" page={CreateEventDetailsPage} name="eventDetails" />
+               <Route path="/create/invitees" page={CreateInviteesPage} name="invitees" />
+            </Set>
+            <Route path="/" page={HomePage} name="home" />
+            <Route notfound page={NotFoundPage} />
+         </Set>
+      </Router>
+   )
 }
 
 export default Routes

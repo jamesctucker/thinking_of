@@ -16,6 +16,10 @@
 .input {
    @apply rounded-none;
 }
+
+.select {
+   @apply rounded-none;
+}
 /**
  * END --- SETUP TAILWINDCSS EDIT
  */

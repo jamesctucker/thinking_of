@@ -1,5 +1,5 @@
 import { Link, navigate, routes } from '@redwoodjs/router'
-import { useRef } from 'react'
+import { useRef, useEffect } from 'react'
 import {
    Form,
    Label,
@@ -11,7 +11,6 @@ import {
 import { useAuth } from '@redwoodjs/auth'
 import { MetaTags } from '@redwoodjs/web'
 import { toast, Toaster } from '@redwoodjs/web/toast'
-import { useEffect } from 'react'
 
 const LoginPage = () => {
    const { isAuthenticated, logIn } = useAuth()
@@ -46,7 +45,7 @@ const LoginPage = () => {
          <div className="flex w-full items-center justify-center">
             <Toaster toastOptions={{ className: 'rw-toast', duration: 6000 }} />
             <div className="card w-96 bg-base-100 shadow-xl rounded-none">
-               <div class="card-body">
+               <div className="card-body">
                   <h2 className="card-title">Login</h2>
 
                   <Form onSubmit={onSubmit}>
