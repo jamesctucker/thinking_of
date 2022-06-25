@@ -1,9 +1,12 @@
-import { Form, Label, InputField } from '@redwoodjs/forms'
+import { Form, Label, InputField, FieldError } from '@redwoodjs/forms'
+import { useForm } from 'react-hook-form'
 import SurveyButtons from 'src/components/SurveyButtons'
 import { useState } from 'react'
 import { TrashIcon, PlusIcon } from '@heroicons/react/solid'
 
 const InviteesPage = () => {
+   const { register, setValue } = useForm()
+
    const handleSubmit = () => {
       console.log(inputFields)
    }
@@ -12,7 +15,11 @@ const InviteesPage = () => {
       { firstname: '', email: '' },
    ])
 
-   const handleFormChange = (index, event) => {
+   const handleFormChange = (index, event, input) => {
+      // this sets the value of the input field with the corresponding index
+      // https://react-hook-form.com/api/useform/setvalue
+      setValue(`event.target.name-${index}`, event.target.value)
+
       let data = [...inputFields]
       data[index][event.target.name] = event.target.value
       setInputFields(data)
@@ -32,6 +39,10 @@ const InviteesPage = () => {
       setInputFields(data)
    }
 
+   // const isRequired = (index) => {
+   //    return index === 0 ? 'this field is required' : false
+   // }
+
    return (
       <div className="w-full sm:3/4 lg:w-3/5">
          <h1>Who should be a part of this video?</h1>
@@ -41,47 +52,71 @@ const InviteesPage = () => {
          <Form onSubmit={handleSubmit}>
             {inputFields.map((input, index) => {
                return (
-                  <div key={index} className="flex flex-row items-end">
-                     <div className="flex flex-col w-5/12">
+                  <div key={index} className="flex flex-row items-start">
+                     <div className="flex flex-col w-2/5">
                         <Label
-                           name="firstname"
+                           name={`firstname-${index}`}
                            className="label"
-                           errorClassName="rw-label rw-label-error"
+                           errorClassName="label label-error"
                         >
                            First name
                         </Label>
-                        <input
-                           name="firstname"
+                        <InputField
+                           {...register(`firstname-${index}`)}
+                           name={`firstname-${index}`}
                            className="input input-bordered w-full"
-                           value={input.firstname}
-                           onChange={(event) => handleFormChange(index, event)}
+                           errorClassName="input input-error w-full"
+                           onChange={(event) =>
+                              handleFormChange(index, event, input)
+                           }
+                           validation={{
+                              required: 'this field is required',
+                           }}
+                        />
+                        <FieldError
+                           name={`firstname-${index}`}
+                           className="text-error text-sm mb-2"
                         />
                      </div>
-                     <div className="flex flex-col ml-4 w-6/12">
+
+                     <div className="flex flex-col ml-4 w-3/5">
                         <Label
-                           name="email"
+                           name={`email-${index}`}
                            className="label"
-                           errorClassName="rw-label rw-label-error"
+                           errorClassName="label label-error"
                         >
                            Email
                         </Label>
-                        <input
-                           name="email"
-                           className="input input-bordered w-full"
-                           value={input.email}
-                           onChange={(event) => handleFormChange(index, event)}
+                        <div className="flex flex-row">
+                           <InputField
+                              {...register(`email-${index}`)}
+                              name={`email-${index}`}
+                              className="input input-bordered w-full"
+                              errorClassName="input input-error w-full"
+                              onChange={(event) =>
+                                 handleFormChange(index, event, input)
+                              }
+                              validation={{
+                                 required: 'this field is required',
+                              }}
+                           />
+                           {index !== 0 && (
+                              <button
+                                 className="btn btn-ghost ml-2"
+                                 onClick={(event) => removeField(event, index)}
+                              >
+                                 <TrashIcon className="text-error h-5 w-5 shadow-lg" />
+                              </button>
+                           )}
+                        </div>
+                        <FieldError
+                           name={`email-${index}`}
+                           className="text-error text-sm mb-2"
                         />
                      </div>
-                     <div className="w-1/12 mb-4">
-                        {index !== 0 && (
-                           <button
-                              className="btn btn-ghost"
-                              onClick={(event) => removeField(event, index)}
-                           >
-                              <TrashIcon className="text-error h-5 w-5 shadow-lg" />
-                           </button>
-                        )}
-                     </div>
+                     {/* <div className="w-1/12">
+
+                     </div> */}
                   </div>
                )
             })}
@@ -94,7 +129,12 @@ const InviteesPage = () => {
                   Add another person
                </button>
             </div>
-            <SurveyButtons />
+            <SurveyButtons
+               nextText="Complete"
+               backText="Back"
+               backIcon="true"
+               disabled={false}
+            />
          </Form>
       </div>
    )

@@ -55,7 +55,7 @@ h2 {
 }
 
 .input {
-   @apply mb-4 rounded shadow;
+   @apply mb-2 rounded shadow;
 }
 
 .select {

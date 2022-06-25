@@ -7,8 +7,10 @@ const EventDetailsPage = () => {
       console.log(data)
       navigate(routes.invitees())
    }
+
+   const disabled = () => {}
    return (
-      <div className="w-full md:w-3/5 lg:w-1/3">
+      <div className="w-full sm:3/4 lg:w-3/5">
          <h1>You're one step closer to making someone's day!</h1>
          <Form onSubmit={handleSubmit}>
             <Label
@@ -41,7 +43,13 @@ const EventDetailsPage = () => {
                <option>get well</option>
                <option>memorial</option>
             </SelectField>
-            <SurveyButtons />
+            <SurveyButtons
+               nextText="Next"
+               backText="Back"
+               nextIcon="true"
+               backIcon="true"
+               disabled={false}
+            />
          </Form>
       </div>
    )
