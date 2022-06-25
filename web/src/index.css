@@ -9,16 +9,43 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
+@layer base {
+   h1,
+   h2,
+   h3,
+   h4,
+   h5,
+   h6 {
+      font-family: Lora, system-ui, serif;
+   }
+
+   p,
+   a,
+   li,
+   td,
+   th,
+   button,
+   input,
+   textarea,
+   label {
+      font-family: Asap, system-ui, serif;
+   }
+}
+
+h1 {
+   @apply text-2xl font-semibold mb-6;
+}
+
 .btn {
-   @apply rounded-none;
+   @apply rounded;
 }
 
 .input {
-   @apply rounded-none;
+   @apply mb-4 rounded;
 }
 
 .select {
-   @apply rounded-none;
+   @apply rounded;
 }
 /**
  * END --- SETUP TAILWINDCSS EDIT
