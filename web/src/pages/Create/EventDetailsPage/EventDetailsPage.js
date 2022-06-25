@@ -22,6 +22,7 @@ const EventDetailsPage = () => {
                name="receiverName"
                className="input input-bordered w-full"
                errorClassName="rw-input rw-input-error"
+               placeholder="first name"
             />
             <Label
                name="eventType"
@@ -40,8 +41,6 @@ const EventDetailsPage = () => {
                <option>get well</option>
                <option>memorial</option>
             </SelectField>
-            {/* <BackButton text="back" />
-            <Submit className="btn btn-primary">Next</Submit> */}
             <SurveyButtons />
          </Form>
       </div>

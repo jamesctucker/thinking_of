@@ -33,19 +33,37 @@
 }
 
 h1 {
-   @apply text-2xl font-semibold mb-6;
+   @apply text-3xl font-semibold mb-2;
+}
+
+h2 {
+   @apply text-2xl font-semibold mb-2;
+}
+
+.subtitle {
+   @apply mb-2;
 }
 
 .btn {
    @apply rounded;
 }
 
+.btn-primary,
+.btn-secondary,
+.btn-outline {
+   @apply shadow;
+}
+
 .input {
-   @apply mb-4 rounded;
+   @apply mb-4 rounded shadow;
 }
 
 .select {
-   @apply rounded;
+   @apply rounded shadow;
+}
+
+label {
+   @apply text-sm uppercase;
 }
 /**
  * END --- SETUP TAILWINDCSS EDIT

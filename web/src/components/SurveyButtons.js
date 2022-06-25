@@ -4,7 +4,7 @@ import { ArrowRightIcon } from '@heroicons/react/solid'
 
 const SurveyButtons = () => {
    return (
-      <div className="survey-buttons flex justify-between my-6">
+      <div className="survey-buttons flex justify-between mt-10">
          <BackButton text="back" />
          <Submit className="btn btn-primary">
             Next
