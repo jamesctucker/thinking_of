@@ -1,3 +1,4 @@
+import React, { useContext } from 'react'
 import { Form, Label, InputField, FieldError } from '@redwoodjs/forms'
 import { useForm } from 'react-hook-form'
 import SurveyButtons from 'src/components/SurveyButtons'
@@ -38,10 +39,6 @@ const InviteesPage = () => {
       data.splice(index, 1)
       setInputFields(data)
    }
-
-   // const isRequired = (index) => {
-   //    return index === 0 ? 'this field is required' : false
-   // }
 
    return (
       <div className="w-full sm:3/4 lg:w-3/5">

@@ -1,3 +1,5 @@
+import React, { useContext } from 'react'
+import { SurveyContext } from 'src/contexts/SurveyContext'
 import { Form, Label, TextField, SelectField } from '@redwoodjs/forms'
 import { navigate, routes } from '@redwoodjs/router'
 // import { useMutation } from '@redwoodjs/web'
@@ -14,10 +16,12 @@ import SurveyButtons from 'src/components/SurveyButtons'
 // `
 
 const EventDetailsPage = () => {
+   const { formData, setFormData } = useContext(SurveyContext)
    // const [create] = useMutation(CREATE_EVENT)
    // const { isAuthenticated, currentUser } = useAuth()
 
    const handleSubmit = (data) => {
+      setFormData(data)
       // const completeData = {
       //    ...data,
       //    userId: currentUser.id,

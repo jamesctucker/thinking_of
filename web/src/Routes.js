@@ -9,6 +9,7 @@
 
 import { Router, Route, Set } from '@redwoodjs/router'
 import MainLayout from 'src/layouts/MainLayout'
+import { SurveyProvider } from './contexts/SurveyContext'
 
 const Routes = () => {
    return (
@@ -18,7 +19,7 @@ const Routes = () => {
             <Route path="/signup" page={SignupPage} name="signup" />
             <Route path="/forgot-password" page={ForgotPasswordPage} name="forgotPassword" />
             <Route path="/reset-password" page={ResetPasswordPage} name="resetPassword" />
-            <Set>
+            <Set wrap={SurveyProvider}>
                <Route path="/create" page={CreateCreatePage} name="create" />
                <Route path="/create/event-details" page={CreateEventDetailsPage} name="eventDetails" />
                <Route path="/create/invitees" page={CreateInviteesPage} name="invitees" />
