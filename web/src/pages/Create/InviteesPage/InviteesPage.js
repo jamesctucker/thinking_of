@@ -1,15 +1,33 @@
 import React, { useContext } from 'react'
 import { Form, Label, InputField, FieldError } from '@redwoodjs/forms'
+// import { useMutation } from '@redwoodjs/web'
+import { useAuth } from '@redwoodjs/auth'
+import { navigate, routes } from '@redwoodjs/router'
 import { useForm } from 'react-hook-form'
 import SurveyButtons from 'src/components/SurveyButtons'
 import { useState } from 'react'
 import { TrashIcon, PlusIcon } from '@heroicons/react/solid'
 
+// const CREATE_EVENT = gql`
+//    mutation CreateEventMutation($input: CreateEventInput!) {
+//       createEvent(input: $input) {
+//          id
+//          name
+//       }
+//    }
+// `
+
 const InviteesPage = () => {
    const { register, setValue } = useForm()
+   const { isAuthenticated } = useAuth()
 
    const handleSubmit = () => {
       console.log(inputFields)
+      if (isAuthenticated) {
+         console.log('complete!')
+      } else {
+         navigate(routes.login())
+      }
    }
 
    const [inputFields, setInputFields] = useState([

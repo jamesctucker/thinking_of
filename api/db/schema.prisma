@@ -49,4 +49,7 @@ model Invitee {
 
 enum EventType {
   BIRTHDAY
+  ANNIVERSARY
+  GET_WELL
+  MEMORIAL
 }
