@@ -1,27 +1,45 @@
 import { Form, Label, TextField, SelectField } from '@redwoodjs/forms'
 import { navigate, routes } from '@redwoodjs/router'
+// import { useMutation } from '@redwoodjs/web'
 import SurveyButtons from 'src/components/SurveyButtons'
+// import { useAuth } from '@redwoodjs/auth'
+
+// const CREATE_EVENT = gql`
+//    mutation CreateEventMutation($input: CreateEventInput!) {
+//       createEvent(input: $input) {
+//          id
+//          name
+//       }
+//    }
+// `
 
 const EventDetailsPage = () => {
+   // const [create] = useMutation(CREATE_EVENT)
+   // const { isAuthenticated, currentUser } = useAuth()
+
    const handleSubmit = (data) => {
-      console.log(data)
+      // const completeData = {
+      //    ...data,
+      //    userId: currentUser.id,
+      //    eventDate: new Date().toISOString(),
+      // }
+      // create({ variables: { input: completeData } })
       navigate(routes.invitees())
    }
 
-   const disabled = () => {}
    return (
       <div className="w-full sm:3/4 lg:w-3/5">
          <h1>You're one step closer to making someone's day!</h1>
          <Form onSubmit={handleSubmit}>
             <Label
-               name="receiverName"
+               name="name"
                className="label"
                errorClassName="rw-label rw-label-error"
             >
                Who is this event for?
             </Label>
             <TextField
-               name="receiverName"
+               name="name"
                className="input input-bordered w-full"
                errorClassName="rw-input rw-input-error"
                placeholder="first name"
@@ -38,7 +56,7 @@ const EventDetailsPage = () => {
                className="select select-bordered w-full"
                multiple={false}
             >
-               <option>birthday</option>
+               <option value="BIRTHDAY">birthday</option>
                <option>anniversary</option>
                <option>get well</option>
                <option>memorial</option>

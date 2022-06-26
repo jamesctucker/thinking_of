@@ -17,7 +17,9 @@ model User {
   salt                String
   resetToken          String?
   resetTokenExpiresAt DateTime?
-  Events              Event[]
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @default(now())
+  events              Event[]
 }
 
 // event model
@@ -28,8 +30,10 @@ model Event {
   eventDate   DateTime
   eventType   EventType @default(BIRTHDAY)
   createdBy   User      @relation(fields: [userId], references: [id])
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @default(now())
   userId      Int
-  Invitees    Invitee[]
+  invitees    Invitee[]
 }
 
 model Invitee {
@@ -39,6 +43,8 @@ model Invitee {
   event       Event   @relation(fields: [eventId], references: [id])
   eventId     Int
   hasUploaded Boolean @default(false)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @default(now())
 }
 
 enum EventType {
