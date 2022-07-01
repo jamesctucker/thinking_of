@@ -1,6 +1,7 @@
-import React, { useContext } from 'react'
+import { useContext } from 'react'
+import { SurveyContext } from 'src/contexts/SurveyContext'
 import { Form, Label, InputField, FieldError } from '@redwoodjs/forms'
-// import { useMutation } from '@redwoodjs/web'
+import { useMutation } from '@redwoodjs/web'
 import { useAuth } from '@redwoodjs/auth'
 import { navigate, routes } from '@redwoodjs/router'
 import { useForm } from 'react-hook-form'
@@ -8,23 +9,33 @@ import SurveyButtons from 'src/components/SurveyButtons'
 import { useState } from 'react'
 import { TrashIcon, PlusIcon } from '@heroicons/react/solid'
 
-// const CREATE_EVENT = gql`
-//    mutation CreateEventMutation($input: CreateEventInput!) {
-//       createEvent(input: $input) {
-//          id
-//          name
-//       }
-//    }
-// `
+const CREATE_EVENT = gql`
+   mutation CreateEventMutation($input: CreateEventInput!) {
+      createEvent(input: $input) {
+         id
+         name
+      }
+   }
+`
 
 const InviteesPage = () => {
    const { register, setValue } = useForm()
-   const { isAuthenticated } = useAuth()
+   const { currentUser, isAuthenticated } = useAuth()
+   const [create, { loading, error }] = useMutation(CREATE_EVENT)
+   const { formData, setFormData } = useContext(SurveyContext)
 
    const handleSubmit = () => {
-      console.log(inputFields)
-      if (isAuthenticated) {
-         console.log('complete!')
+      if (isAuthenticated && currentUser.id) {
+         create({
+            variables: {
+               input: {
+                  name: formData.name,
+                  eventType: formData.eventType,
+                  eventDate: formData.eventDate,
+                  userId: currentUser.id,
+               },
+            },
+         })
       } else {
          navigate(routes.login())
       }
