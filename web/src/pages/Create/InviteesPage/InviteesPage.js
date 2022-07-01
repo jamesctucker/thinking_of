@@ -37,7 +37,7 @@ const InviteesPage = () => {
             },
          })
       } else {
-         navigate(routes.login())
+         navigate(routes.createLogin())
       }
    }
 
@@ -140,9 +140,6 @@ const InviteesPage = () => {
                            className="text-error text-sm mb-2"
                         />
                      </div>
-                     {/* <div className="w-1/12">
-
-                     </div> */}
                   </div>
                )
             })}
@@ -159,7 +156,9 @@ const InviteesPage = () => {
                nextText="Complete"
                backText="Back"
                backIcon="true"
+               skip="true"
                disabled={false}
+               onSkip={() => navigate(routes.createLogin())}
             />
          </Form>
       </div>
