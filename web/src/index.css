@@ -59,7 +59,7 @@ h2 {
 }
 
 .select {
-   @apply rounded shadow;
+   @apply mb-2 rounded shadow;
 }
 
 label {

@@ -1,6 +1,12 @@
 import React, { useContext } from 'react'
 import { SurveyContext } from 'src/contexts/SurveyContext'
-import { Form, Label, TextField, SelectField } from '@redwoodjs/forms'
+import {
+   Form,
+   Label,
+   TextField,
+   SelectField,
+   DateField,
+} from '@redwoodjs/forms'
 import { navigate, routes } from '@redwoodjs/router'
 import SurveyButtons from 'src/components/SurveyButtons'
 
@@ -25,7 +31,7 @@ const EventDetailsPage = () => {
             </Label>
             <TextField
                name="name"
-               className="input input-bordered w-full"
+               className="input input-bordered w-full md:w-3/5"
                errorClassName="rw-input rw-input-error"
                placeholder="first name"
             />
@@ -34,11 +40,11 @@ const EventDetailsPage = () => {
                className="label"
                errorClassName="rw-label rw-label-error"
             >
-               What kind of event is this?
+               What's the occasion?
             </Label>
             <SelectField
                name="eventType"
-               className="select select-bordered w-full"
+               className="select select-bordered w-full md:w-3/5"
                multiple={false}
             >
                <option value="BIRTHDAY">birthday</option>
@@ -46,6 +52,17 @@ const EventDetailsPage = () => {
                <option>get well</option>
                <option>memorial</option>
             </SelectField>
+            <Label
+               name="eventDate"
+               className="label"
+               errorClassName="rw-label rw-label-error"
+            >
+               When is the event?
+            </Label>
+            <DateField
+               name="eventDate"
+               className="input input-bordered w-full md:w-3/5"
+            />
             <SurveyButtons
                nextText="Next"
                backText="Back"
